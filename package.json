@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build": "ng build -bh=mini-games -d=https://little-group.github.io/mini-games/ -ec -op=docs --prod",
+    "build": "ng build -bh=/mini-games -d=https://little-group.github.io/mini-games/ -ec -op=docs --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
