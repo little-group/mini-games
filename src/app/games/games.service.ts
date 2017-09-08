@@ -14,12 +14,15 @@ export class GamesService {
   constructor(
     private http: HttpClient
   ) {
-    this._api_endpoint = environment.GAMES_API_URL;
+    this._api_endpoint = `${environment.ASSETS_URL}db/games.json`;
   }
 
   get(): Observable<Game[]>  {
-    return this.http.get(`${this._api_endpoint}/assets/db/games.json`).map((games: Game[]) => {
-      return games;
+    return this.http.get(this._api_endpoint).map((games: Game[]) => {
+      return games.map((game: Game) => {
+        game.img = `${environment.ASSETS_URL}images/${game.img}`;
+        return game;
+      });
     });
   }
 }
