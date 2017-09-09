@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+    <div class="card">
+      <div class="card-header">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary">{{score}}</button>
+          <button type="button" class="btn btn-secondary" (click)="init()">Reset</button>
+          <button type="button" class="btn btn-secondary">{{timer}}</button>
+        </div>
+      </div>
+      <div class="card-body" (contextmenu)="noContextMenu()">
+        <ng-template ngFor let-cube [ngForOf]="cubes" let-i="index">
+          <div class="cube" [ngClass]="{'bg-primary': cube.resolved && !cube.has_mine, 'bg-danger': cube.marked}" (click)="onClick(cube, i)" (contextmenu)="mark(cube)">
+
+            <div *ngIf="cube.has_mine && (game_over || win)" [ngClass]="{'bg-primary': win, 'bg-danger': game_over}">
+              *
+            </div>
+
+            <div *ngIf="cube.resolved">
+              <div *ngIf="!cube.has_mine && cube.number < 9">
+                {{cube.number}}
+              </div>
+            </div>
+          </div>
+          <div *ngIf="i % x_count === x_count - 1" class="clearfix"></div>
+        </ng-template>
+
+        <div *ngIf="win" class="end-layer">
+            <ngb-alert [type]="'success'" [dismissible]="false">
+              <h1>Congratulations!</h1>
+            </ngb-alert>
+        </div>
+
+        <div *ngIf="game_over" class="end-layer">
+            <ngb-alert [type]="'danger'" [dismissible]="false">
+              <h1>Game over :(</h1>
+            </ngb-alert>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

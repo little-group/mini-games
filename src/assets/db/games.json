@@ -32,7 +32,8 @@
     "img": "snake.png"
   },
   {
-    "title": "snake",
-    "img": "snake.png"
+    "title": "Minesweeper",
+    "img": "minesweeper.jpg",
+    "url": "minesweeper"
   }
 ]

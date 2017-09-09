@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 import { SnakeComponent } from './snake/snake.component';
 import { GamesService } from './games.service';
 import {HttpClientModule} from "@angular/common/http";
+import { MinesweeperComponent } from './minesweeper/minesweeper.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
-  declarations: [SnakeComponent],
+  declarations: [SnakeComponent, MinesweeperComponent],
   providers: [GamesService]
 })
 export class GamesModule { }
