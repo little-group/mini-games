@@ -189,9 +189,14 @@ export class MinesweeperComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  checkForWin(){
-    this.win = this.cubes.every((cube: Cube) => {
+  checkForWin() {
+    const all_resolved = this.cubes.every((cube: Cube) => {
       return cube.resolved;
     });
+
+    if (all_resolved) {
+      this.win = true;
+      clearInterval(this.timer_id);
+    }
   }
 }
